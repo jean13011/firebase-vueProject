@@ -26,21 +26,26 @@
   name: "Dashboard",
     data () {
       return {
+        /*initialise les employés dans un tableau vide avant de les mettres dedans*/
         employees : [],
       }
     },
-    created () {
-      db.collection('employees').orderBy('employee_id').get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          console.log(doc.data())
 
+    /*methode vue pour remplir notre objet employee avec les info d'une base de données firebase*/
+    created () {
+      db.collection('employees').orderBy('employee_id').get()
+        .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          /*on met dans une constante le fetch de nos entités pour remplir l'objet employees'*/
           const data = {
             'id': doc.id,
+            /*doc.data() est une fonction du doc recuperé précement, il permet de récuperer nos entités avec le nom des champs*/
             'employee_id' : doc.data().employee_id,
             'name': doc.data().name,
             'departement': doc.data().dept,
             'position': doc.data().position
           }
+          /*on pousse les données de la constante data dans employee*/
           this.employees.push(data)
         })
       })
