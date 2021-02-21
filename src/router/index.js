@@ -4,6 +4,8 @@ import Dashboard from "@/components/Dashboard";
 import NewEmployee from "@/components/NewEmployee";
 import ViewEmployee from "@/components/ViewEmployee";
 import Employee from "@/components/Employee";
+import Login from '@/components/Login'
+import Register from "@/components/Register";
 
 
 Vue.use(VueRouter)
@@ -14,21 +16,37 @@ const routes = [
     name: 'dashboard',
     component: Dashboard
   },
+
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+
   {
     path: '/new',
     name: 'new-employee',
     component: NewEmployee
   },
+
   {
     path: '/edit/:employee_id',
     name: 'employee',
     component: Employee
   },
+
   {
     path: '/:employee_id',
     name: 'view-employee',
     component: ViewEmployee
   },
+
 ]
 
 const router = new VueRouter({

@@ -56,8 +56,13 @@ export default {
         dept: this.dept,
         position: this.position
       })
-      .then(docRef => this.$router.push('/'))
-      .catch(error => console.log(err))
+      .then(docRef => {
+        console.log("Client added: ", docRef.id)
+        this.$router.push('/')
+      })
+      .catch(error => {
+        console.error('Error adding employee: ', error)
+      })
     }
   }
 }
